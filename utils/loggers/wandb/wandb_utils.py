@@ -1,8 +1,5 @@
 # YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
 
-# WARNING ⚠️ wandb is deprecated and will be removed in future release.
-# See supported integrations at https://github.com/ultralytics/yolov5#integrations
-
 import logging
 import os
 import sys
@@ -16,14 +13,11 @@ ROOT = FILE.parents[3]  # YOLOv5 root directory
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 RANK = int(os.getenv('RANK', -1))
-DEPRECATION_WARNING = f"{colorstr('wandb')}: WARNING ⚠️ wandb is deprecated and will be removed in a future release. " \
-                      f'See supported integrations at https://github.com/ultralytics/yolov5#integrations.'
 
 try:
     import wandb
 
     assert hasattr(wandb, '__version__')  # verify package import not local dir
-    LOGGER.warning(DEPRECATION_WARNING)
 except (ImportError, AssertionError):
     wandb = None
 
